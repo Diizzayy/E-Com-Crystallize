@@ -1,0 +1,775 @@
+query product ($language: String!, $path: String!) {
+    catalogue(language: $language, path: $path) {
+        ... on Product {
+            id
+            name
+            type
+            language
+            path
+            components {
+                id
+                name
+                type
+                content {
+                    ... on BooleanContent {
+                        value
+                    }
+                    ... on SingleLineContent {
+                        text
+                    }
+                    ... on RichTextContent {
+                        json
+                        html
+                        plainText
+                    }
+                    ... on ImageContent {
+                        images {
+                            url
+                            altText
+                            key
+                            variants {
+                                url
+                                width
+                                key
+                            }
+                        }
+                    }
+                    ... on ParagraphCollectionContent {
+                        paragraphs {
+                            title {
+                                text
+                            }
+                            body {
+                                json
+                                html
+                                plainText
+                            }
+                            images {
+                                url
+                                altText
+                                key
+                                variants {
+                                    url
+                                    width
+                                    key
+                                }
+                            }
+                        }
+                    }
+                    ... on ItemRelationsContent {
+                        items {
+                            id
+                            name
+                            path
+                        }
+                    }
+                    ... on GridRelationsContent {
+                        grids {
+                            id
+                            name
+                        }
+                    }
+                    ... on LocationContent {
+                        lat
+                        long
+                    }
+                    ... on PropertiesTableContent {
+                        sections {
+                            title
+                            properties {
+                                key
+                                value
+                            }
+                        }
+                    }
+                    ... on DatetimeContent {
+                        datetime
+                    }
+                    ... on VideoContent {
+                        videos {
+                            id
+                            playlists
+                            title
+                            thumbnails {
+                                url
+                                altText
+                                key
+                                variants {
+                                    url
+                                    width
+                                    key
+                                }
+                            }
+                        }
+                    }
+                    ... on NumericContent {
+                        number
+                        unit
+                    }
+                    ... on SelectionContent {
+                        options {
+                            key
+                            value
+                        }
+                    }
+                    ... on FileContent {
+                        files {
+                            url
+                            key
+                            title
+                            size
+                        }
+                    }
+                    ... on ComponentChoiceContent {
+                        selectedComponent {
+                            id
+                            name
+                            type
+                            content {
+                                ... on BooleanContent {
+                                    value
+                                }
+                                ... on SingleLineContent {
+                                    text
+                                }
+                                ... on RichTextContent {
+                                    json
+                                    html
+                                    plainText
+                                }
+                                ... on ImageContent {
+                                    images {
+                                        url
+                                        altText
+                                        key
+                                        variants {
+                                            url
+                                            width
+                                            key
+                                        }
+                                    }
+                                }
+                                ... on ParagraphCollectionContent {
+                                    paragraphs {
+                                        title {
+                                            text
+                                        }
+                                        body {
+                                            json
+                                            html
+                                            plainText
+                                        }
+                                        images {
+                                            url
+                                            altText
+                                            key
+                                            variants {
+                                                url
+                                                width
+                                                key
+                                            }
+                                        }
+                                    }
+                                }
+                                ... on ItemRelationsContent {
+                                    items {
+                                        id
+                                        name
+                                        path
+                                    }
+                                }
+                                ... on GridRelationsContent {
+                                    grids {
+                                        id
+                                        name
+                                    }
+                                }
+                                ... on LocationContent {
+                                    lat
+                                    long
+                                }
+                                ... on PropertiesTableContent {
+                                    sections {
+                                        title
+                                        properties {
+                                            key
+                                            value
+                                        }
+                                    }
+                                }
+                                ... on DatetimeContent {
+                                    datetime
+                                }
+                                ... on VideoContent {
+                                    videos {
+                                        id
+                                        playlists
+                                        title
+                                        thumbnails {
+                                            url
+                                            altText
+                                            key
+                                            variants {
+                                                url
+                                                width
+                                                key
+                                            }
+                                        }
+                                    }
+                                }
+                                ... on NumericContent {
+                                    number
+                                    unit
+                                }
+                                ... on SelectionContent {
+                                    options {
+                                        key
+                                        value
+                                    }
+                                }
+                                ... on FileContent {
+                                    files {
+                                        url
+                                        key
+                                        title
+                                        size
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    ... on ContentChunkContent {
+                        chunks {
+                            id
+                            name
+                            type
+                            content {
+                                ... on BooleanContent {
+                                    value
+                                }
+                                ... on SingleLineContent {
+                                    text
+                                }
+                                ... on RichTextContent {
+                                    json
+                                    html
+                                    plainText
+                                }
+                                ... on ImageContent {
+                                    images {
+                                        url
+                                        altText
+                                        key
+                                        variants {
+                                            url
+                                            width
+                                            key
+                                        }
+                                    }
+                                }
+                                ... on ParagraphCollectionContent {
+                                    paragraphs {
+                                        title {
+                                            text
+                                        }
+                                        body {
+                                            json
+                                            html
+                                            plainText
+                                        }
+                                        images {
+                                            url
+                                            altText
+                                            key
+                                            variants {
+                                                url
+                                                width
+                                                key
+                                            }
+                                        }
+                                    }
+                                }
+                                ... on ItemRelationsContent {
+                                    items {
+                                        id
+                                        name
+                                        path
+                                    }
+                                }
+                                ... on GridRelationsContent {
+                                    grids {
+                                        id
+                                        name
+                                    }
+                                }
+                                ... on LocationContent {
+                                    lat
+                                    long
+                                }
+                                ... on PropertiesTableContent {
+                                    sections {
+                                        title
+                                        properties {
+                                            key
+                                            value
+                                        }
+                                    }
+                                }
+                                ... on DatetimeContent {
+                                    datetime
+                                }
+                                ... on VideoContent {
+                                    videos {
+                                        id
+                                        playlists
+                                        title
+                                        thumbnails {
+                                            url
+                                            altText
+                                            key
+                                            variants {
+                                                url
+                                                width
+                                                key
+                                            }
+                                        }
+                                    }
+                                }
+                                ... on NumericContent {
+                                    number
+                                    unit
+                                }
+                                ... on SelectionContent {
+                                    options {
+                                        key
+                                        value
+                                    }
+                                }
+                                ... on FileContent {
+                                    files {
+                                        url
+                                        key
+                                        title
+                                        size
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            variants {
+                id
+                name
+                sku
+                components {
+                    id
+                    name
+                    type
+                    content {
+                        ... on BooleanContent {
+                            value
+                        }
+                        ... on SingleLineContent {
+                            text
+                        }
+                        ... on RichTextContent {
+                            json
+                            html
+                            plainText
+                        }
+                        ... on ImageContent {
+                            images {
+                                url
+                                altText
+                                key
+                                variants {
+                                    url
+                                    width
+                                    key
+                                }
+                            }
+                        }
+                        ... on ParagraphCollectionContent {
+                            paragraphs {
+                                title {
+                                    text
+                                }
+                                body {
+                                    json
+                                    html
+                                    plainText
+                                }
+                                images {
+                                    url
+                                    altText
+                                    key
+                                    variants {
+                                        url
+                                        width
+                                        key
+                                    }
+                                }
+                            }
+                        }
+                        ... on ItemRelationsContent {
+                            items {
+                                id
+                                name
+                                path
+                            }
+                        }
+                        ... on GridRelationsContent {
+                            grids {
+                                id
+                                name
+                            }
+                        }
+                        ... on LocationContent {
+                            lat
+                            long
+                        }
+                        ... on PropertiesTableContent {
+                            sections {
+                                title
+                                properties {
+                                    key
+                                    value
+                                }
+                            }
+                        }
+                        ... on DatetimeContent {
+                            datetime
+                        }
+                        ... on VideoContent {
+                            videos {
+                                id
+                                playlists
+                                title
+                                thumbnails {
+                                    url
+                                    altText
+                                    key
+                                    variants {
+                                        url
+                                        width
+                                        key
+                                    }
+                                }
+                            }
+                        }
+                        ... on NumericContent {
+                            number
+                            unit
+                        }
+                        ... on SelectionContent {
+                            options {
+                                key
+                                value
+                            }
+                        }
+                        ... on FileContent {
+                            files {
+                                url
+                                key
+                                title
+                                size
+                            }
+                        }
+                        ... on ComponentChoiceContent {
+                            selectedComponent {
+                                id
+                                name
+                                type
+                                content {
+                                    ... on BooleanContent {
+                                        value
+                                    }
+                                    ... on SingleLineContent {
+                                        text
+                                    }
+                                    ... on RichTextContent {
+                                        json
+                                        html
+                                        plainText
+                                    }
+                                    ... on ImageContent {
+                                        images {
+                                            url
+                                            altText
+                                            key
+                                            variants {
+                                                url
+                                                width
+                                                key
+                                            }
+                                        }
+                                    }
+                                    ... on ParagraphCollectionContent {
+                                        paragraphs {
+                                            title {
+                                                text
+                                            }
+                                            body {
+                                                json
+                                                html
+                                                plainText
+                                            }
+                                            images {
+                                                url
+                                                altText
+                                                key
+                                                variants {
+                                                    url
+                                                    width
+                                                    key
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ... on ItemRelationsContent {
+                                        items {
+                                            id
+                                            name
+                                            path
+                                        }
+                                    }
+                                    ... on GridRelationsContent {
+                                        grids {
+                                            id
+                                            name
+                                        }
+                                    }
+                                    ... on LocationContent {
+                                        lat
+                                        long
+                                    }
+                                    ... on PropertiesTableContent {
+                                        sections {
+                                            title
+                                            properties {
+                                                key
+                                                value
+                                            }
+                                        }
+                                    }
+                                    ... on DatetimeContent {
+                                        datetime
+                                    }
+                                    ... on VideoContent {
+                                        videos {
+                                            id
+                                            playlists
+                                            title
+                                            thumbnails {
+                                                url
+                                                altText
+                                                key
+                                                variants {
+                                                    url
+                                                    width
+                                                    key
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ... on NumericContent {
+                                        number
+                                        unit
+                                    }
+                                    ... on SelectionContent {
+                                        options {
+                                            key
+                                            value
+                                        }
+                                    }
+                                    ... on FileContent {
+                                        files {
+                                            url
+                                            key
+                                            title
+                                            size
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        ... on ContentChunkContent {
+                            chunks {
+                                id
+                                name
+                                type
+                                content {
+                                    ... on BooleanContent {
+                                        value
+                                    }
+                                    ... on SingleLineContent {
+                                        text
+                                    }
+                                    ... on RichTextContent {
+                                        json
+                                        html
+                                        plainText
+                                    }
+                                    ... on ImageContent {
+                                        images {
+                                            url
+                                            altText
+                                            key
+                                            variants {
+                                                url
+                                                width
+                                                key
+                                            }
+                                        }
+                                    }
+                                    ... on ParagraphCollectionContent {
+                                        paragraphs {
+                                            title {
+                                                text
+                                            }
+                                            body {
+                                                json
+                                                html
+                                                plainText
+                                            }
+                                            images {
+                                                url
+                                                altText
+                                                key
+                                                variants {
+                                                    url
+                                                    width
+                                                    key
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ... on ItemRelationsContent {
+                                        items {
+                                            id
+                                            name
+                                            path
+                                        }
+                                    }
+                                    ... on GridRelationsContent {
+                                        grids {
+                                            id
+                                            name
+                                        }
+                                    }
+                                    ... on LocationContent {
+                                        lat
+                                        long
+                                    }
+                                    ... on PropertiesTableContent {
+                                        sections {
+                                            title
+                                            properties {
+                                                key
+                                                value
+                                            }
+                                        }
+                                    }
+                                    ... on DatetimeContent {
+                                        datetime
+                                    }
+                                    ... on VideoContent {
+                                        videos {
+                                            id
+                                            playlists
+                                            title
+                                            thumbnails {
+                                                url
+                                                altText
+                                                key
+                                                variants {
+                                                    url
+                                                    width
+                                                    key
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ... on NumericContent {
+                                        number
+                                        unit
+                                    }
+                                    ... on SelectionContent {
+                                        options {
+                                            key
+                                            value
+                                        }
+                                    }
+                                    ... on FileContent {
+                                        files {
+                                            url
+                                            key
+                                            title
+                                            size
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                price
+                priceVariants {
+                    identifier
+                    name
+                    price
+                    currency
+                }
+                stockLocations {
+                    identifier
+                    name
+                    stock
+                }
+                isDefault
+                images {
+                    url
+                    altText
+                    key
+                    variants {
+                        key
+                        width
+                        url
+                    }
+                }
+                subscriptionPlans {
+                    identifier
+                    name
+                    periods {
+                        id
+                        name
+                        initial {
+                            priceVariants {
+                                identifier
+                                name
+                                price
+                                currency
+                            }
+                        }
+                        recurring {
+                            priceVariants {
+                                identifier
+                                name
+                                price
+                                currency
+                            }
+                        }
+                    }
+                }
+            }
+            vatType {
+                name
+                percent
+            }
+            topics {
+                path
+                name
+            }
+        }
+    }
+}

@@ -1,0 +1,178 @@
+query products {
+    catalogue {
+        name
+        children {
+            ... on Product {
+                ...product
+                topics {
+                    path
+                    name
+                }
+            }
+        }
+    }
+}
+
+fragment content on ComponentContent {
+    ...boolean
+    ...singleLine
+    ...richText
+    ...imageContent
+    ...paragraphCollection
+    ...propertiesTable
+    ...numeric
+    ...selection
+    ...file
+}
+
+fragment component on Component {
+    id
+    name
+    type
+    content {
+        ...content
+        ...paragraphCollection
+    }
+}
+
+fragment imageContent on ImageContent {
+    images {
+        ...image
+    }
+}
+
+fragment image on Image {
+    url
+    altText
+    key
+    variants {
+        url
+        width
+        key
+    }
+}
+
+fragment paragraphCollection on ParagraphCollectionContent {
+    paragraphs {
+        title {
+            ...singleLine
+        }
+        body {
+            ...richText
+        }
+        images {
+            ...image
+        }
+    }
+}
+
+fragment product on Product {
+    id
+    name
+    type
+    language
+    path
+    components {
+        ...component
+    }
+    variants {
+        id
+        name
+        sku
+        components {
+            ...component
+        }
+        price
+        priceVariants {
+            identifier
+            name
+            price
+            currency
+        }
+        stockLocations {
+            identifier
+            name
+            stock
+        }
+        isDefault
+        images {
+            url
+            altText
+            key
+            variants {
+                key
+                width
+                url
+            }
+        }
+        subscriptionPlans {
+            identifier
+            name
+            periods {
+                id
+                name
+                initial {
+                    priceVariants {
+                        identifier
+                        name
+                        price
+                        currency
+                    }
+                }
+                recurring {
+                    priceVariants {
+                        identifier
+                        name
+                        price
+                        currency
+                    }
+                }
+            }
+        }
+    }
+}
+
+fragment propertiesTable on PropertiesTableContent {
+    sections {
+        ... on PropertiesTableSection {
+            title
+            properties {
+                key
+                value
+            }
+        }
+    }
+}
+
+fragment richText on RichTextContent {
+    plainText
+}
+
+fragment boolean on BooleanContent {
+    value
+}
+
+fragment singleLine on SingleLineContent {
+    text
+}
+
+fragment numeric on NumericContent {
+    number
+    unit
+}
+
+fragment selection on SelectionContent {
+    options {
+        key
+        value
+    }
+}
+
+fragment file on FileContent {
+    files {
+        url
+        key
+        title
+        size
+    }
+}
