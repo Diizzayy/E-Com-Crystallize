@@ -6,12 +6,38 @@ export default defineNuxtConfig({
       "graphql-client": {
         clients: {
           default: {
-            host: process.env.CRYTALLIZE_DOMAIN,
-            token: {
-              name: "X-Crystallize-Static-Auth-Token",
-              value: process.env.CRYTALLIZE_STOREFRONT_TOKEN,
-              type: "application/json"
+            host: process.env.CRYTALLIZE_CATALOGUE_DOMAIN,
+            headers: {
+              'X-Crystallize-Static-Auth-Token': process.env.CRYTALLIZE_STOREFRONT_TOKEN,
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
+              "Access-Control-Allow-Headers":
+                  "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
             },
+            corsOptions: {
+              mode: "same-origin",
+              credentials: "same-origin",
+              'Access-Control-Allow-Origin': '*'
+            },
+            retainToken: true
+          },
+          orders: {
+            host: process.env.CRYTALLIZE_ORDER_DOMAIN,
+            headers: {
+              'X-Crystallize-Access-Token-Id': process.env.CRYSTALLIZE_ACCESS_TOKEN_ID,
+              'X-Crystallize-Access-Token-Secret': process.env.CRYSTALLIZE_ACCESS_TOKEN_SECRET,
+              'X-Crystallize-Static-Auth-Token': process.env.CRYTALLIZE_STOREFRONT_TOKEN,
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
+              "Access-Control-Allow-Headers":
+               "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
+            },
+            corsOptions: {
+              mode: "same-origin",
+              credentials: "same-origin",
+              'Access-Control-Allow-Origin': '*'
+            },
+            credentials: "same-origin",
             retainToken: true
           }
         }

@@ -17,7 +17,7 @@
              v-html="book.components[0].content.html">
         </div>
 
-        <input type="submit" value="Buy" class="btn btn-primary">
+        <input type="submit" @click="pay()" value="Buy" class="btn btn-primary">
 
         <div class="pt-5">
           <p>Categories:  <a href="#" v-for="topic in book.topics"> {{topic.name}} &nbsp;</a></p>
@@ -29,6 +29,8 @@
 
 <script setup>
 
+useGqlCors({ credentials: 'same-origin' })
+
 const route = useRoute()
 
 const id = route.params.book
@@ -37,6 +39,10 @@ const {data} = await useAsyncData('product',() => GqlProduct({language: "en" , p
 
 const book = data.value.catalogue
 
+async function pay(){
+  const { data } = await useAsyncData('createOrder',() => GqlCreateOrder())
+  console.log("REQUEST: " , data)
+}
 </script>
 
 <style scoped>

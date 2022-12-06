@@ -1,0 +1,57 @@
+mutation createOrder {
+    orders {
+        create(
+            input: {
+                customer: {
+                    firstName: "Crystal"
+                    lastName: "Ecommerce"
+                    identifier: "cus_0001"
+                    addresses: [
+                        {
+                            type: billing
+                            street: "Kverndalsgata"
+                            streetNumber: "8"
+                            city: "Skien"
+                            country: "Norway"
+                            postalCode: "1234"
+                        }
+                        {
+                            type: delivery
+                            street: "Kverndalsgata"
+                            streetNumber: "8"
+                            city: "Skien"
+                            country: "Norway"
+                            postalCode: "1234"
+                        }
+                    ]
+                }
+                cart: {
+                    name: "Calathea"
+                    sku: "maranta-leuconeura-1611849929203"
+                    quantity: 1
+                    price: {
+                        currency: "EUR"
+                        tax: { name: "No Tax", percent: 0 }
+                        net: 23
+                        gross: 23
+                    }
+                }
+                payment: [
+                    {
+                        provider: stripe
+                        stripe: {
+                            orderId: "ord_0001"
+                            customerId: "cus_0001"
+                            paymentMethod: "card"
+                            paymentIntentId: "pi_0001"
+                            metadata: null
+                        }
+                    }
+                ]
+                total: { gross: 23, net: 23, currency: "EUR" }
+            }
+        ) {
+            id
+        }
+    }
+}
